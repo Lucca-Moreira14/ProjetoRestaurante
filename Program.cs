@@ -1,6 +1,13 @@
 ﻿using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 
+// Verifica se o argumento --menu foi passado para rodar o menu de terminal
+if (args.Contains("--menu"))
+{
+    TerminalMenu.Run();
+    return;
+}
+
 var builder = WebApplication.CreateBuilder(args);
 
 var ptBr = new CultureInfo("pt-BR");
