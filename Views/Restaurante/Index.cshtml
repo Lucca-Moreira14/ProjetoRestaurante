@@ -1,0 +1,55 @@
+@model RestauranteDashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<section class="hero-panel">
+    <div>
+        <p class="eyebrow">Painel operacional</p>
+        <h2>O restaurante agora tem uma camada visual para acompanhar cardápio, pedidos e estoque.</h2>
+        <p class="hero-text">Use o menu superior para navegar entre as telas. Os dados continuam em memória, mas agora você pode operar o sistema direto no navegador.</p>
+    </div>
+    <div class="hero-card">
+        <span>Atalho</span>
+        <strong>Fluxo web</strong>
+        <p>Cadastre pratos, monte pedidos e acompanhe o estoque sem voltar ao terminal.</p>
+    </div>
+</section>
+
+<section class="stats-grid">
+    <article class="stat-card">
+        <span>Cardápio</span>
+        <strong>@Model.TotalPratos</strong>
+    </article>
+    <article class="stat-card">
+        <span>Pedidos</span>
+        <strong>@Model.TotalPedidos</strong>
+    </article>
+    <article class="stat-card">
+        <span>Estoque</span>
+        <strong>@Model.TotalIngredientes</strong>
+    </article>
+    <article class="stat-card">
+        <span>Clientes</span>
+        <strong>@Model.TotalClientes</strong>
+    </article>
+    <article class="stat-card">
+        <span>Funcionários</span>
+        <strong>@Model.TotalFuncionarios</strong>
+    </article>
+</section>
+
+<section class="panel-grid">
+    <a class="feature-card" asp-controller="Restaurante" asp-action="Cardapio">
+        <h3>Cardápio</h3>
+        <p>Adicionar e listar pratos com preço e descrição.</p>
+    </a>
+    <a class="feature-card" asp-controller="Restaurante" asp-action="Pedidos">
+        <h3>Pedidos</h3>
+        <p>Criar pedidos presenciais e anexar itens do cardápio.</p>
+    </a>
+    <a class="feature-card" asp-controller="Restaurante" asp-action="Estoque">
+        <h3>Estoque</h3>
+        <p>Registrar ingredientes e acompanhar o nível mínimo.</p>
+    </a>
+</section>

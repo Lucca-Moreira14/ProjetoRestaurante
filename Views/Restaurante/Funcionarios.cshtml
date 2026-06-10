@@ -1,0 +1,68 @@
+@{
+    ViewData["Title"] = "Funcionários";
+}
+
+<section class="page-header">
+    <div>
+        <p class="eyebrow">Funcionários</p>
+        <h2>Equipe do restaurante</h2>
+    </div>
+</section>
+
+<section class="panel-grid split">
+    <article class="panel-card">
+        <h3>Novo funcionário</h3>
+        <div class="stack-form button-stack">
+            <form asp-action="CadastrarGarcom" method="post">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="secondary-button">Cadastrar garçom</button>
+            </form>
+            <form asp-action="CadastrarCozinheiro" method="post">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="secondary-button">Cadastrar cozinheiro</button>
+            </form>
+            <form asp-action="CadastrarGerente" method="post">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="secondary-button">Cadastrar gerente</button>
+            </form>
+        </div>
+    </article>
+
+    <article class="panel-card">
+        <h3>Equipe atual</h3>
+        @if (Model.Funcionarios.Count == 0)
+        {
+            <p class="muted">Nenhum funcionário cadastrado.</p>
+        }
+        else
+        {
+            <div class="list-cards">
+                @foreach (var funcionario in Model.Funcionarios)
+                {
+                    <div class="item-card">
+                        <div>
+                            @switch (funcionario)
+                            {
+                                case Garcom garcom:
+                                    <strong>Garçom</strong>
+                                    <p>Setor: @garcom.Setor</p>
+                                    break;
+                                case Cozinheiro cozinheiro:
+                                    <strong>Cozinheiro</strong>
+                                    <p>Especialidade: @cozinheiro.Especialidade</p>
+                                    break;
+                                case Gerente gerente:
+                                    <strong>Gerente</strong>
+                                    <p>Nível de acesso: @gerente.nivelAcesso</p>
+                                    break;
+                                default:
+                                    <strong>Funcionário</strong>
+                                    break;
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </article>
+</section>

@@ -1,0 +1,64 @@
+@model PedidosViewModel
+@{
+    ViewData["Title"] = "Pedidos";
+}
+
+<section class="page-header">
+    <div>
+        <p class="eyebrow">Pedidos</p>
+        <h2>Montagem e acompanhamento</h2>
+    </div>
+</section>
+
+<section class="panel-grid split">
+    <article class="panel-card">
+        <h3>Novo pedido</h3>
+        <form asp-action="CriarPedido" method="post" class="stack-form">
+            @Html.AntiForgeryToken()
+            <label>
+                <span>ID do cliente</span>
+                <input asp-for="IdCliente" type="number" min="1" />
+            </label>
+            <label>
+                <span>Número da mesa</span>
+                <input asp-for="NumeroMesa" type="number" min="1" />
+            </label>
+            <label>
+                <span>Prato inicial</span>
+                <select asp-for="IndicePrato">
+                    <option value="">Sem prato inicial</option>
+                    @for (var i = 0; i < Model.PratosDisponiveis.Count; i++)
+                    {
+                        <option value="@i">@Model.PratosDisponiveis[i].Nome - R$ @Model.PratosDisponiveis[i].Preco.ToString("F2")</option>
+                    }
+                </select>
+            </label>
+            <button type="submit" class="primary-button">Criar ou atualizar pedido</button>
+        </form>
+    </article>
+
+    <article class="panel-card">
+        @if (Model.Pedidos.Count == 0)
+        {
+            <p class="muted">Nenhum pedido cadastrado.</p>
+        }
+        else
+        {
+            <div class="list-cards">
+                @foreach (var pedido in Model.Pedidos)
+                {
+                    var clienteId = pedido.Cliente?.IdCliente ?? 0;
+                    var mesa = pedido is PedidoPresencial pedidoPresencial ? pedidoPresencial.NumeroMesa : 0;
+                    <div class="item-card">
+                        <div>
+                            <strong>Pedido #@pedido.NumeroPedido</strong>
+                            <p>Cliente @clienteId · Mesa @mesa · @pedido.Status</p>
+                            <p>@pedido.Pratos.Count prato(s)</p>
+                        </div>
+                        <span>R$ @pedido.ValorTotal.ToString("F2")</span>
+                    </div>
+                }
+            </div>
+        }
+    </article>
+</section>

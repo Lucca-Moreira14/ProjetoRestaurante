@@ -1,4 +1,4 @@
-class PedidoDelivery : Pedido
+public class PedidoDelivery : Pedido
 {
     public string EnderecoEntrega { get; private set; } = string.Empty;
 

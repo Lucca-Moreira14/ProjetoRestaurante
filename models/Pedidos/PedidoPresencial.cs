@@ -1,4 +1,4 @@
-class PedidoPresencial : Pedido
+public class PedidoPresencial : Pedido
 {
     public int NumeroMesa { get; private set; }
 

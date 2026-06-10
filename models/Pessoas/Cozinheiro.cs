@@ -1,4 +1,4 @@
-class Cozinheiro : Funcionario
+public class Cozinheiro : Funcionario
 {
     public string Especialidade { get; private set; } = string.Empty;
 
@@ -20,7 +20,7 @@ class Cozinheiro : Funcionario
     }
     public void AtualizarStatus()
     {
-
+        System.Console.WriteLine("Status do cozinheiro atualizado.");
     }
 
 }

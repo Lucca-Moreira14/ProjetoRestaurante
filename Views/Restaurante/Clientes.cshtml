@@ -1,0 +1,51 @@
+@model ClientesViewModel
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<section class="page-header">
+    <div>
+        <p class="eyebrow">Clientes</p>
+        <h2>Clientes cadastrados e pedidos em aberto</h2>
+    </div>
+</section>
+
+<section class="panel-grid split">
+    <article class="panel-card">
+        <h3>Novo cliente</h3>
+        <form asp-action="CriarCliente" method="post" class="stack-form">
+            @Html.AntiForgeryToken()
+            <label>
+                <span>ID do cliente</span>
+                <input name="idCliente" type="number" min="1" value="1" />
+            </label>
+            <button type="submit" class="primary-button">Salvar cliente</button>
+        </form>
+    </article>
+
+    <article class="panel-card">
+        <h3>Lista de clientes</h3>
+        @if (Model.Clientes.Count == 0)
+        {
+            <p class="muted">Nenhum cliente cadastrado.</p>
+        }
+        else
+        {
+            <div class="list-cards">
+                @foreach (var cliente in Model.Clientes)
+                {
+                    var pedidoAberto = cliente.ObterPedidoAberto();
+                    var mesa = pedidoAberto is PedidoPresencial pedidoPresencial ? pedidoPresencial.NumeroMesa : 0;
+                    <div class="item-card">
+                        <div>
+                            <strong>Cliente @cliente.IdCliente</strong>
+                            <p>Pedidos: @cliente.Pedidos.Count</p>
+                            <p>Mesa aberta: @mesa</p>
+                        </div>
+                        <span>@(pedidoAberto == null ? "Sem pedido aberto" : $"R$ {pedidoAberto.ValorTotal:F2}")</span>
+                    </div>
+                }
+            </div>
+        }
+    </article>
+</section>

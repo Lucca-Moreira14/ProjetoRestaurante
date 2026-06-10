@@ -1,4 +1,4 @@
-class Mesa
+public class Mesa
 {
     public int Numero { get; private set; }
     public int Capacidade { get; private set; }

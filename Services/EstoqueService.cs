@@ -7,11 +7,8 @@ public class EstoqueService
         ingredientes.Add(ingrediente);
     }
 
-    public void ListarIngredientes()
+    public List<Ingrediente> ListarIngredientes()
     {
-        foreach (var item in ingredientes)
-        {
-            Console.WriteLine(item.Nome);
-        }
+        return ingredientes;
     }
 }

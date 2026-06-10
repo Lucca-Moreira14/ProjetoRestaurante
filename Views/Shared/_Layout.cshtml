@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - Fast - Pedidos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">Fast</p>
+                <h1>Fast - Pedidos</h1>
+            </div>
+            <nav class="nav-links">
+                <a asp-controller="Restaurante" asp-action="Index">Dashboard</a>
+                <a asp-controller="Restaurante" asp-action="Cardapio">Cardápio</a>
+                <a asp-controller="Restaurante" asp-action="Pedidos">Pedidos</a>
+                <a asp-controller="Restaurante" asp-action="Estoque">Estoque</a>
+                <a asp-controller="Restaurante" asp-action="Clientes">Clientes</a>
+                <a asp-controller="Restaurante" asp-action="Funcionarios">Funcionários</a>
+            </nav>
+        </header>
+
+        <main class="content-wrap">
+            @if (TempData["Success"] is string successMessage)
+            {
+                <div class="alert success">@successMessage</div>
+            }
+
+            @if (TempData["Error"] is string errorMessage)
+            {
+                <div class="alert error">@errorMessage</div>
+            }
+
+            @RenderBody()
+        </main>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - Projeto Restaurante</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">Projeto Restaurante</p>
+                <h1>Interface web</h1>
+            </div>
+            <nav class="nav-links">
+                <a asp-controller="Restaurante" asp-action="Index">Dashboard</a>
+                <a asp-controller="Restaurante" asp-action="Cardapio">Cardápio</a>
+                <a asp-controller="Restaurante" asp-action="Pedidos">Pedidos</a>
+                <a asp-controller="Restaurante" asp-action="Estoque">Estoque</a>
+                <a asp-controller="Restaurante" asp-action="Clientes">Clientes</a>
+                <a asp-controller="Restaurante" asp-action="Funcionarios">Funcionários</a>
+            </nav>
+        </header>
+
+        <main class="content-wrap">
+            @if (TempData["Success"] is string successMessage)
+            {
+                <div class="alert success">@successMessage</div>
+            }
+
+            @if (TempData["Error"] is string errorMessage)
+            {
+                <div class="alert error">@errorMessage</div>
+            }
+
+            @RenderBody()
+        </main>
+    </div>
+</body>
+</html>

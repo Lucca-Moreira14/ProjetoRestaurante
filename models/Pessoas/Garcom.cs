@@ -1,4 +1,4 @@
-class Garcom : Funcionario
+public class Garcom : Funcionario
 {
     public string Setor { get; private set; } = string.Empty;
 
@@ -20,10 +20,10 @@ class Garcom : Funcionario
     }
     public void AnotarPedido()
     {
-
+        System.Console.WriteLine("Pedido anotado pelo garçom.");
     }
     public void FecharConta()
     {
-
+        System.Console.WriteLine("Conta fechada pelo garçom.");
     }
 }
