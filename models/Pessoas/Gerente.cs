@@ -20,6 +20,8 @@ class Gerente : Funcionario
     }
     public void GerarRelatorio()
     {
-
+        System.Console.WriteLine("Gerando relatório resumido do restaurante (simulação).\n");
+        System.Console.WriteLine("-- Relatório --");
+        System.Console.WriteLine("(Este é um relatório de exemplo; conecte-se a serviços para dados reais.)");
     }
 }

@@ -20,7 +20,7 @@ class Cozinheiro : Funcionario
     }
     public void AtualizarStatus()
     {
-
+        System.Console.WriteLine("Status do cozinheiro atualizado.");
     }
 
 }

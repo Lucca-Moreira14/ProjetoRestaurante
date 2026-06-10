@@ -1,4 +1,4 @@
-public class Prato
+public class Prato //representa um item do cardapio
 {
     private readonly List<Ingrediente> ingredientes = new();
 
@@ -33,7 +33,7 @@ public class Prato
         Preco = preco;
     }
 
-    public void AdicionarIngrediente(Ingrediente ingrediente)
+    public void AdicionarIngrediente(Ingrediente ingrediente) //Adiciona ingrediente a composicao do prato 
     {
         ingredientes.Add(ingrediente);
     }
